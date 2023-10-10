@@ -5,9 +5,9 @@ import java.util.Scanner;
 import model.Worker;
 
 public class Library {
-   Scanner sc = new Scanner(System.in);
+   static Scanner sc = new Scanner(System.in);
    
-    public int inputIntLimit(int min, int max) {
+    public static int inputIntLimit(int min, int max) {
         while (true) {
             try {
                 int result = Integer.parseInt(sc.nextLine().trim());
@@ -22,7 +22,7 @@ public class Library {
         }
     }
     
-    public String inputString() {
+    public static String inputString() {
         while (true) {
             String result = sc.nextLine().trim();
             if (result.isEmpty()) {
@@ -34,34 +34,18 @@ public class Library {
         }
     }
     
-    public int inputInt() {
-        while (true) {
-            try {
-                int result = Integer.parseInt(sc.nextLine());
-                if (result > 0) return result;
-                else {
-                    System.err.println("Must be input number > 0!");
-                    System.out.print("Enter again: ");
-                }
-            } catch (NumberFormatException e) {
-                System.err.println("Must be input number!");
-                System.out.print("Enter again: ");
-            }
-        }
-    }
-    
-     public boolean checkIdExist(ArrayList<Worker> workers, String id) {
+     public static boolean checkIdExist(ArrayList<Worker> workers, String id) {
         //check from first to last list id worker exist or not
         for (Worker worker : workers) {
             if (id.equalsIgnoreCase(worker.getId())) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     //check salary must be greater than 0
-    public int checkInputSalary() {
+    public static int checkInputSalary() {
         //loop until user input correct
         while (true) {
             try {
@@ -79,7 +63,7 @@ public class Library {
     }
 
     //check worker duplicate
-    public boolean checkWorkerExist(ArrayList<Worker> workers, String id,
+    public static boolean checkWorkerExist(ArrayList<Worker> workers, String id,
             String name, int age, int salary, String workLocation) {
         //check from first to last list worker  worker exist or not
         for (Worker worker : workers) {
